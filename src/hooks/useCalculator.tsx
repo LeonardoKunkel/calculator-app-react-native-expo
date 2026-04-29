@@ -22,7 +22,33 @@ export const useCalculator = () => {
     }, [number])
 
     const buildNumber = (numberString: string) => {
-        console.log({ numberString });
+
+        // Verificar si ya existe el punto decimal
+        if (number.includes('.') && numberString === '.') return;
+
+        if (number.startsWith('0') || number.startsWith('-0')) {
+            if (numberString === '.') {
+                return setNumber(number + numberString);
+            }
+
+            // Evaluar si es otro cero y no hay punto
+            if (numberString === '0' && number.includes('.')) {
+                return setNumber(number + numberString);
+            }
+
+            // Evaluar si es diferente de createBottomTabNavigator, no hay punto y es el primer número
+            if (numberString != '0' && !number.includes('.')) {
+                return setNumber(numberString);
+            }
+
+            // Evitar el conjunto de puros ceros: 00000
+            if (numberString === '0' && !number.includes('.')) {
+                return;
+            }
+
+        }
+
+        setNumber(number + numberString);
 
     }
 
