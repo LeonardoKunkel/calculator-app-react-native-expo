@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 enum Operator {
     add = '+',
@@ -15,6 +15,11 @@ export const useCalculator = () => {
     const [prevNumber, setPrevNumber] = useState('0');
 
     const lastOperation = useRef<Operator | undefined>(undefined);
+
+    useEffect(() => {
+        // TODO: calcular el subResultado
+        setFormula(number);
+    }, [number])
 
     const buildNumber = (numberString: string) => {
         console.log({ numberString });
