@@ -17,7 +17,9 @@ const CalculatorApp = () => {
     divideOperation,
     multuplyOperation,
     subtractOperation,
-    addOperation
+    addOperation,
+    calculateSubResult,
+    calculateResult
   } = useCalculator();
 
   return (
@@ -80,7 +82,7 @@ const CalculatorApp = () => {
 
         <CalculatorButton label='0' doubleSize onPress={() => buildNumber('0')} />
         <CalculatorButton label='.' onPress={() => buildNumber('.')} />
-        <CalculatorButton label='=' color={Colors.orange} onPress={() => console.log('=')} />
+        <CalculatorButton label='=' color={Colors.orange} onPress={calculateResult} />
 
       </View>
 
